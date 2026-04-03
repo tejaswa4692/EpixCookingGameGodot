@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dwni761wss6mw"
+path="res://.godot/imported/apil.obj-9ecb3c5a1fa1dd77277d69fe51eb0ceb.mesh"
+
+[deps]
+
+files=["res://.godot/imported/apil.obj-9ecb3c5a1fa1dd77277d69fe51eb0ceb.mesh"]
+
+source_file="res://Assets/flora/tree/apil.obj"
+dest_files=["res://.godot/imported/apil.obj-9ecb3c5a1fa1dd77277d69fe51eb0ceb.mesh", "res://.godot/imported/apil.obj-9ecb3c5a1fa1dd77277d69fe51eb0ceb.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

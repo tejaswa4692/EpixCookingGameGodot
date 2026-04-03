@@ -1,0 +1,36 @@
+[gd_resource type="VisualShader" load_steps=5 format=3 uid="uid://b88a1ho0a08c"]
+
+[ext_resource type="Texture2D" uid="uid://ck776uexw7rr8" path="res://Assets/texture.png" id="1_is0g0"]
+[ext_resource type="Texture2D" uid="uid://p8xmomt0a5kr" path="res://Assets/texturealpha.png" id="2_tm0tc"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_7fiue"]
+texture = ExtResource("1_is0g0")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_x1rei"]
+texture = ExtResource("2_tm0tc")
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform sampler2D tex_frg_2;
+
+
+
+void fragment() {
+// Texture2D:2
+	vec4 n_out2p0 = texture(tex_frg_2, UV);
+
+
+// Output:0
+	ALBEDO = vec3(n_out2p0.xyz);
+
+
+}
+"
+nodes/fragment/0/position = Vector2(560, 160)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_7fiue")
+nodes/fragment/2/position = Vector2(-180, 140)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_x1rei")
+nodes/fragment/3/position = Vector2(-220, 460)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0)

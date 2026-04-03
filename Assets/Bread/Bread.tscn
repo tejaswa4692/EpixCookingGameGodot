@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://bu738fmaq8igv"]
+
+[ext_resource type="Material" uid="uid://cp6e4amfv08iy" path="res://Assets/Universal.tres" id="1_632re"]
+[ext_resource type="ArrayMesh" uid="uid://v0e5am5kn5k1" path="res://Assets/Bread/bread.obj" id="1_g4og1"]
+[ext_resource type="Shader" uid="uid://cen7rhe83i4ou" path="res://Assets/Bread/Bread.gdshader" id="2_47t0i"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_47t0i"]
+render_priority = 0
+shader = ExtResource("2_47t0i")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/shadow = 0.5
+shader_parameter/shadow_width = 0.0
+shader_parameter/shadow_color = Color(0.705, 0.705, 0.705, 0.705)
+shader_parameter/specular_smoothness = 0.01
+shader_parameter/specular_strength = 0.075
+shader_parameter/glossiness = 0.1
+shader_parameter/rim_size = 0.5
+shader_parameter/rim_smoothness = 0.01
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ivhpr"]
+size = Vector3(0.199203, 0.301071, 0.510544)
+
+[node name="Bread" type="RigidBody3D" groups=["Bread", "edibles", "veggie"]]
+collision_layer = 2
+collision_mask = 3
+mass = 0.3
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="Bread" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+material_override = ExtResource("1_632re")
+mesh = ExtResource("1_g4og1")
+surface_material_override/0 = SubResource("ShaderMaterial_47t0i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["Bread", "edibles"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.39233e-05, 0.148766, 0.00157928)
+shape = SubResource("BoxShape3D_ivhpr")

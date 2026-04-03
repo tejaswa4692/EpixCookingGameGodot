@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://bbuxpyhskqfxi"]
+
+[ext_resource type="ArrayMesh" uid="uid://ccjgonso0wcwk" path="res://Assets/Brocolli/Brocolli.obj" id="1_434ln"]
+[ext_resource type="Script" uid="uid://co1gr3eq12fl6" path="res://Assets/Prototype_Textures/veggies.gd" id="1_w7ufi"]
+[ext_resource type="AudioStream" uid="uid://c0gjyxn7fwu7u" path="res://Assets/music/sound/drop1.mp3" id="3_bwiru"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_434ln"]
+rough = true
+absorbent = true
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5ykfg"]
+radius = 0.18
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_434ln"]
+height = 0.185303
+radius = 0.0605469
+
+[node name="Brocolli" type="RigidBody3D" groups=["Brocolli", "veggie"]]
+collision_layer = 2
+collision_mask = 3
+mass = 0.4
+physics_material_override = SubResource("PhysicsMaterial_434ln")
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_w7ufi")
+
+[node name="Brocolli" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_434ln")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.209639, 0)
+shape = SubResource("SphereShape3D_5ykfg")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.941453, -0.337145, 0, 0.337145, 0.941453, 0, 0.0210857, -0.00204537)
+shape = SubResource("CylinderShape3D_434ln")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_bwiru")
+volume_db = -35.825
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

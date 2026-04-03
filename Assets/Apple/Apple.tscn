@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cc0tml43bosoa"]
+
+[ext_resource type="Script" uid="uid://co1gr3eq12fl6" path="res://Assets/Prototype_Textures/veggies.gd" id="1_cpbwe"]
+[ext_resource type="ArrayMesh" uid="uid://dwni761wss6mw" path="res://Assets/flora/tree/apil.obj" id="2_tucle"]
+[ext_resource type="AudioStream" uid="uid://c0gjyxn7fwu7u" path="res://Assets/music/sound/drop1.mp3" id="3_am57y"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_w1cyg"]
+radius = 0.108449
+
+[node name="Apple" type="RigidBody3D" groups=["Apple", "veggie"]]
+collision_layer = 2
+collision_mask = 3
+mass = 0.3
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_cpbwe")
+
+[node name="Apil" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00396812, -0.139846, 0.00726366)
+mesh = ExtResource("2_tucle")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00963196, 0.00673096, 0)
+shape = SubResource("SphereShape3D_w1cyg")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_am57y")
+volume_db = -35.825
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

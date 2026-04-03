@@ -1,0 +1,21 @@
+# Godot 4+
+.godot/
+.import/
+.export/
+.export_presets.cfg
+
+# Android builds
+/android/
+
+# Logs & temp
+*.log
+*.tmp
+
+# Ignore music (fix for your issue)
+Assets/music/
+Assets/music/*
+
+# Optional: ignore all audio if you want
+*.mp3
+*.wav
+*.ogg

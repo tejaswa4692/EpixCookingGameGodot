@@ -1,0 +1,143 @@
+[gd_scene load_steps=18 format=3 uid="uid://bh8xgnqcc23o5"]
+
+[ext_resource type="Texture2D" uid="uid://dopdvtcnckwry" path="res://Assets/Prototype_Textures/g1462.png" id="1_iu3qw"]
+[ext_resource type="PackedScene" uid="uid://fun3vwi3b6ve" path="res://Player/player.tscn" id="2_7oj32"]
+[ext_resource type="Texture2D" uid="uid://buh1aob3n05vx" path="res://Assets/citrus_orchard_road_puresky_1k.jpg" id="3_6g3ri"]
+[ext_resource type="PackedScene" uid="uid://bbuxpyhskqfxi" path="res://Assets/Brocolli/Brocolli.tscn" id="4_hm0dn"]
+[ext_resource type="PackedScene" uid="uid://bjwrvbd8nhuq4" path="res://Player/couldrin.tscn" id="5_6hfcc"]
+[ext_resource type="PackedScene" uid="uid://cc0tml43bosoa" path="res://Assets/Apple/Apple.tscn" id="6_ghjgg"]
+[ext_resource type="PackedScene" uid="uid://db3yi20uyhrnv" path="res://Assets/flora/tree/tree.tscn" id="7_ghjgg"]
+[ext_resource type="PackedScene" uid="uid://d0mrvuol16cyr" path="res://Assets/wheat/wheat.tscn" id="8_w6qss"]
+[ext_resource type="PackedScene" uid="uid://bu738fmaq8igv" path="res://Assets/Bread/Bread.tscn" id="9_s8byp"]
+[ext_resource type="PackedScene" uid="uid://crgw5uopg4x3b" path="res://Assets/Cake/Cake.tscn" id="10_6skjn"]
+[ext_resource type="PackedScene" uid="uid://d1spejrx80f6k" path="res://Assets/Egg/Egg.tscn" id="11_rphvy"]
+[ext_resource type="PackedScene" uid="uid://b6oeff8oss4v" path="res://Assets/Axe/Axe.tscn" id="12_nuejo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7oj32"]
+albedo_texture = ExtResource("1_iu3qw")
+uv1_triplanar = true
+uv2_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6g3ri"]
+albedo_texture = ExtResource("1_iu3qw")
+uv1_triplanar = true
+uv2_triplanar = true
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hm0dn"]
+sky_top_color = Color(0.370885, 0.448264, 0.420387, 1)
+sky_horizon_color = Color(0.849699, 0.568702, 0.56915, 1)
+sky_curve = 0.139955
+sky_cover = ExtResource("3_6g3ri")
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0.551834, 0.561986, 0.578015, 1)
+ground_curve = 0.380544
+ground_energy_multiplier = 0.55
+sun_angle_max = 0.0
+sun_curve = 0.219613
+
+[sub_resource type="Sky" id="Sky_rphvy"]
+sky_material = SubResource("ProceduralSkyMaterial_hm0dn")
+
+[sub_resource type="Environment" id="Environment_b814l"]
+background_mode = 2
+sky = SubResource("Sky_rphvy")
+ambient_light_source = 3
+tonemap_mode = 4
+ssao_radius = 24.0
+fog_light_energy = 0.65
+fog_sun_scatter = 0.34
+fog_density = 0.0055
+
+[node name="PlayGround" type="Node3D"]
+
+[node name="Tree" parent="." instance=ExtResource("7_ghjgg")]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 2.30688, 0)
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.79248, 0, 0)
+size = Vector3(5, 1, 5)
+material = SubResource("StandardMaterial3D_7oj32")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.634242, 0.0815885, -0.0340219)
+operation = 2
+size = Vector3(2.93243, 1, 4.71851)
+material = SubResource("StandardMaterial3D_6g3ri")
+
+[node name="Player" parent="." instance=ExtResource("2_7oj32")]
+
+[node name="Looks" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Looks"]
+environment = SubResource("Environment_b814l")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Looks"]
+transform = Transform3D(-0.943037, 0.279665, -0.18019, 0, 0.54162, 0.840623, 0.332688, 0.792739, -0.510768, 0, 3.30811, 0)
+shadow_enabled = true
+shadow_blur = 0.0
+
+[node name="Brocolli" parent="." instance=ExtResource("4_hm0dn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.28252, -4.79105)
+
+[node name="Brocolli2" parent="." instance=ExtResource("4_hm0dn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.28252, -5.24621)
+
+[node name="Brocolli3" parent="." instance=ExtResource("4_hm0dn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.28252, -4.39085)
+
+[node name="Brocolli4" parent="." instance=ExtResource("4_hm0dn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.28252, -3.96839)
+
+[node name="Brocolli5" parent="." instance=ExtResource("4_hm0dn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.497665, 5.28252, -3.96839)
+
+[node name="Brocolli6" parent="." instance=ExtResource("4_hm0dn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.497665, 5.28252, -4.42246)
+
+[node name="Brocolli7" parent="." instance=ExtResource("4_hm0dn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.497665, 5.28252, -4.98161)
+
+[node name="Brocolli8" parent="." instance=ExtResource("4_hm0dn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.497665, 5.28252, -5.40186)
+
+[node name="Couldrn" parent="." instance=ExtResource("5_6hfcc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7807, 0.219355, 10.5733)
+
+[node name="Apple" parent="." instance=ExtResource("6_ghjgg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.215126, 3.27882, -4.30918)
+
+[node name="Apple2" parent="." instance=ExtResource("6_ghjgg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.707723, 3.27882, -4.30918)
+
+[node name="Apple3" parent="." instance=ExtResource("6_ghjgg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14909, 3.27882, -4.30918)
+
+[node name="Apple4" parent="." instance=ExtResource("6_ghjgg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.60203, 3.28698, 9.1889)
+
+[node name="Bread" parent="." instance=ExtResource("9_s8byp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.96936, 3.08805, -3.09725)
+
+[node name="Wheat3" parent="." instance=ExtResource("8_w6qss")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.24329, 6.09936, 6.45637)
+
+[node name="Wheat4" parent="." instance=ExtResource("8_w6qss")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.901, 4.06624, 8.28208)
+
+[node name="Wheat2" parent="." instance=ExtResource("8_w6qss")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.96936, 2.03312, 10.1078)
+
+[node name="Wheat" parent="." instance=ExtResource("8_w6qss")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.88306, 1.79791, 10.5491)
+
+[node name="Cake" parent="." instance=ExtResource("10_6skjn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.92731, 2.63206, 5.03178)
+
+[node name="Egg" parent="." instance=ExtResource("11_rphvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.92731, 2.63206, 6.84015)
+
+[node name="Axe" parent="." instance=ExtResource("12_nuejo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.44776, 2.01004, 0)

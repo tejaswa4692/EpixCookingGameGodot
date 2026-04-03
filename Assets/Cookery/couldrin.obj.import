@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cr8ji5ub7efbr"
+path="res://.godot/imported/couldrin.obj-70f66c7b1fd0cd4213ea45f2b2be8127.mesh"
+
+[deps]
+
+files=["res://.godot/imported/couldrin.obj-70f66c7b1fd0cd4213ea45f2b2be8127.mesh"]
+
+source_file="res://Assets/Cookery/couldrin.obj"
+dest_files=["res://.godot/imported/couldrin.obj-70f66c7b1fd0cd4213ea45f2b2be8127.mesh", "res://.godot/imported/couldrin.obj-70f66c7b1fd0cd4213ea45f2b2be8127.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

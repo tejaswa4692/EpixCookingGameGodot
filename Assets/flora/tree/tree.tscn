@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://db3yi20uyhrnv"]
+
+[ext_resource type="ArrayMesh" uid="uid://dq4l5bhhl54d2" path="res://Assets/flora/tree/tree.obj" id="1_153w2"]
+[ext_resource type="Script" uid="uid://clupvkgrsxmop" path="res://Assets/flora/tree/tree.gd" id="1_dg8an"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_153w2"]
+albedo_color = Color(0.400055, 0.395365, 0.15834, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dg8an"]
+albedo_color = Color(0.43477, 0.416234, 0.234028, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_03ua0"]
+albedo_color = Color(0.517938, 0.347323, 0.259031, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_153w2"]
+points = PackedVector3Array(-0.0243206, 2.55344, 1.29994, -1.20967, 2.42378, 0.268341, -0.30177, -0.032172, 0.578278, 0.222084, -0.032172, 0.578278, 0.565313, 2.47592, 1.2582, 0.0355979, 3.09506, 1.21431, -0.109639, 3.33654, 0.823589, -1.05813, 2.8817, -0.064754, -1.17471, 2.3641, -0.314104, -0.30177, -0.032172, 0.0542661, 0.222084, -0.032172, 0.0542661, 0.576819, 0.857598, 0.0682685, 0.597009, 0.940606, 0.428022, 0.96629, 2.45397, 0.279381, 0.806724, 2.88822, 0.698645, 0.506263, 3.00382, 1.16665, 0.325204, 3.42297, 1.01235, 0.215571, 3.47202, -0.175965, -0.708391, 3.1688, -0.252978, -0.428771, 2.91223, -1.28431, -0.784157, 2.51914, -1.14536, -0.346274, 2.39703, -1.45099, 0.422463, 2.47558, -1.25199, 0.66344, 2.22552, -0.818997, 1.00819, 2.38297, -0.415083, 0.838637, 2.83368, 0.169786, 0.770469, 3.04875, -0.276405, 0.652151, 3.18904, 0.746306, 0.617633, 3.27033, 0.379821, 0.339533, 3.1983, -0.813881, -0.319137, 3.2254, -0.563993, 0.310876, 2.99936, -1.10685, 0.0748924, 2.69751, -1.27111, 0.778067, 2.7565, -0.931555)
+
+[node name="Tree" type="StaticBody3D" groups=["triggerableobject"]]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_dg8an")
+
+[node name="Tree" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0373217, 0, -0.303681)
+mesh = ExtResource("1_153w2")
+surface_material_override/0 = SubResource("StandardMaterial3D_153w2")
+surface_material_override/1 = SubResource("StandardMaterial3D_dg8an")
+surface_material_override/2 = SubResource("StandardMaterial3D_03ua0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0373217, 0, -0.303681)
+shape = SubResource("ConvexPolygonShape3D_153w2")
+
+[node name="ApilContainer" type="Node3D" parent="."]
+transform = Transform3D(0.978053, 0, -0.208356, 0, 1, 0, 0.208356, 0, 0.978053, 0, 0, 0)
+
+[node name="Marker3D" type="Marker3D" parent="ApilContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.987792, 2.61263, 0.840218)
+
+[node name="Marker3D2" type="Marker3D" parent="ApilContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.61263, -1.95485)
+
+[node name="Marker3D3" type="Marker3D" parent="ApilContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.29929, 2.61263, -0.975917)
+
+[node name="Marker3D4" type="Marker3D" parent="ApilContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25396, 2.61263, -0.133985)
+
+[node name="Marker3D5" type="Marker3D" parent="ApilContainer"]
+transform = Transform3D(0.9756, 0.219557, 0, -0.219557, 0.9756, 0, 0, 0, 1, 0.770623, 2.61263, 1.13048)

@@ -1,0 +1,213 @@
+[gd_scene load_steps=10 format=3 uid="uid://fun3vwi3b6ve"]
+
+[ext_resource type="Script" uid="uid://b0c02p6ckmpdq" path="res://Player/player.gd" id="1_2f8j2"]
+[ext_resource type="Texture2D" uid="uid://rvw3bpwvdruy" path="res://Assets/music/kevin.jpg" id="2_4ntmi"]
+[ext_resource type="AudioStream" uid="uid://cq3y0yjv5tdwh" path="res://Assets/music/Ancient Winds.mp3" id="3_btcbx"]
+[ext_resource type="Texture2D" uid="uid://h8qs6v7c8c3q" path="res://Assets/Bread/Bread.png" id="3_gwnis"]
+[ext_resource type="FontFile" uid="uid://bmkp4vrll7brb" path="res://Fonts/Figtree/static/Figtree-Bold.ttf" id="3_k53q1"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_btcbx"]
+height = 1.24316
+radius = 0.256348
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ntmi"]
+bg_color = Color(0.235516, 0.437751, 0.498944, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_4ntmi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gwnis"]
+border_width_left = 9
+border_width_top = 9
+border_width_right = 9
+border_width_bottom = 9
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+shadow_size = 5
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_2f8j2")
+
+[node name="CShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.620518, 0)
+shape = SubResource("CylinderShape3D_btcbx")
+debug_color = Color(0.141176, 0.427451, 0.92549, 0.784314)
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23555, 0)
+fov = 80.0
+
+[node name="GrabPoint" type="Marker3D" parent="Camera"]
+transform = Transform3D(0.374607, -0.840314, 0.391845, 0, 0.422618, 0.906308, -0.927184, -0.339509, 0.158316, 0, -0.174393, -0.82992)
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+target_position = Vector3(0, -3, 0)
+collision_mask = 2
+
+[node name="everythingray" type="RayCast3D" parent="Camera"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+target_position = Vector3(0, -3, 0)
+
+[node name="Control" type="Control" parent="Camera"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="Camera/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="Camera/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.802
+anchor_top = 0.865
+anchor_right = 0.98
+anchor_bottom = 0.96
+offset_top = 0.200012
+offset_bottom = -0.199951
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4ntmi")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Camera/Control/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.325
+anchor_top = 0.116
+anchor_right = 0.955
+anchor_bottom = 0.597
+offset_left = 6.25999
+offset_right = 37.135
+offset_bottom = -0.0243721
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 21
+text = "Ancient Winds"
+vertical_alignment = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Camera/Control/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.35
+anchor_top = 0.707
+anchor_right = 0.96
+anchor_bottom = 0.942
+offset_left = 1.00007
+offset_top = -9.15881
+offset_right = 1.0
+offset_bottom = 0.841187
+grow_horizontal = 2
+grow_vertical = 2
+text = "Kevin MacLeod"
+vertical_alignment = 1
+
+[node name="Panel" type="TextureRect" parent="Camera/Control/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.044
+anchor_top = 0.127
+anchor_right = 0.288
+anchor_bottom = 0.924
+offset_left = 0.0119991
+offset_top = 0.363999
+offset_bottom = 0.167999
+theme = SubResource("Theme_4ntmi")
+texture = ExtResource("2_4ntmi")
+expand_mode = 1
+
+[node name="Inventory" type="Control" parent="Camera/Control"]
+layout_mode = 1
+anchor_left = 0.3
+anchor_top = 0.2
+anchor_right = 0.7
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Camera/Control/Inventory"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = -198.0
+offset_right = 108.0
+offset_bottom = -134.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_k53q1")
+theme_override_font_sizes/font_size = 46
+text = "Inventory"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemList" type="ItemList" parent="Camera/Control/Inventory"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -207.0
+offset_top = -140.5
+offset_right = 207.0
+offset_bottom = 140.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/guide_color = Color(0.451979, 0.209032, 0.387319, 1)
+theme_override_colors/font_color = Color(0.319151, 0.3299, 0.385036, 1)
+theme_override_constants/outline_size = -5
+theme_override_constants/v_separation = 10
+theme_override_constants/line_separation = 10
+theme_override_fonts/font = ExtResource("3_k53q1")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/focus = SubResource("StyleBoxFlat_gwnis")
+theme_override_styles/panel = SubResource("StyleBoxFlat_gwnis")
+theme_override_styles/selected = SubResource("StyleBoxFlat_gwnis")
+theme_override_styles/selected_focus = SubResource("StyleBoxFlat_gwnis")
+allow_search = false
+auto_width = true
+auto_height = true
+text_overrun_behavior = 0
+wraparound_items = false
+item_count = 3
+max_columns = 3
+icon_mode = 0
+fixed_icon_size = Vector2i(128, 128)
+item_0/text = "Bread"
+item_0/icon = ExtResource("3_gwnis")
+item_1/text = "Fruit Bread"
+item_1/icon = ExtResource("3_gwnis")
+item_2/text = "adawdaw"
+item_2/icon = ExtResource("3_gwnis")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_btcbx")
+autoplay = true
+
+[connection signal="item_clicked" from="Camera/Control/Inventory/ItemList" to="." method="inventoryitemspawninhand"]

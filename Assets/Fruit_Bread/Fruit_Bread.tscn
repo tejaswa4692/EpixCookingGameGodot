@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://do7k5ayq4130j"]
+
+[ext_resource type="ArrayMesh" uid="uid://gvb10kcl5jnr" path="res://Assets/Fruit_Bread/Fruit Bread.obj" id="1_c36lo"]
+[ext_resource type="Material" uid="uid://cp6e4amfv08iy" path="res://Assets/Universal.tres" id="2_8uf6n"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ivhpr"]
+size = Vector3(0.199203, 0.301071, 0.452049)
+
+[node name="Fruit Bread" type="RigidBody3D" groups=["Fruit_Bread", "edibles"]]
+collision_layer = 2
+collision_mask = 3
+mass = 0.3
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="Bread" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = ExtResource("1_c36lo")
+surface_material_override/0 = ExtResource("2_8uf6n")
+surface_material_override/1 = ExtResource("2_8uf6n")
+surface_material_override/2 = ExtResource("2_8uf6n")
+surface_material_override/3 = ExtResource("2_8uf6n")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["Bread", "edibles"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.39233e-05, 0.148766, 0.0308266)
+shape = SubResource("BoxShape3D_ivhpr")

@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bdnvusg8ysf0"
+path="res://.godot/imported/Hatchet.obj-9624f980801e2e3fbd18398b58fcd5ac.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Hatchet.obj-9624f980801e2e3fbd18398b58fcd5ac.mesh"]
+
+source_file="res://Assets/Axe/Hatchet.obj"
+dest_files=["res://.godot/imported/Hatchet.obj-9624f980801e2e3fbd18398b58fcd5ac.mesh", "res://.godot/imported/Hatchet.obj-9624f980801e2e3fbd18398b58fcd5ac.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

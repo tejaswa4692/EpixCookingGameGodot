@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://b6oeff8oss4v"]
+
+[ext_resource type="ArrayMesh" uid="uid://bdnvusg8ysf0" path="res://Assets/Axe/Hatchet.obj" id="1_vi04t"]
+[ext_resource type="Texture2D" uid="uid://ctakodxwc8ibo" path="res://Assets/Axe/Diffuse_palette_2.jpg" id="2_ld3a0"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vi04t"]
+friction = 40.0
+rough = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_clc7p"]
+albedo_texture = ExtResource("2_ld3a0")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vi04t"]
+size = Vector3(0.224579, 0.124634, 0.0410156)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vi04t"]
+radius = 0.0187916
+height = 0.649382
+
+[node name="Axe" type="RigidBody3D" groups=["Axe", "pickableobjects"]]
+collision_layer = 2
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_vi04t")
+
+[node name="Hatchet" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_vi04t")
+surface_material_override/0 = SubResource("StandardMaterial3D_clc7p")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0409393, 0.532547, -0.000976563)
+shape = SubResource("BoxShape3D_vi04t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.278816, 0)
+shape = SubResource("CapsuleShape3D_vi04t")
